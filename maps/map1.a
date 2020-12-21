@@ -1,0 +1,14 @@
+R 1920 1080
+NO ./textures/texture-wall-gotele.xpm
+SO ./textures/texture-wall-gotele.xpm
+WE ./textures/texture-wall-gotele.xpm
+EA ./textures/texture-wall-gotele.xpm
+
+S ./textures/sprite.xpm
+F 255,0,0
+C 0,255,0
+
+      1111
+1111111001
+1000000001
+1111111111

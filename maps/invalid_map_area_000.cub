@@ -1,0 +1,18 @@
+				R			 1080 720
+			NO ./textures/texture-wall-gotele.xpm
+	SO 			./textures/texture-wall-gotele.xpm
+		EA ./textures/texture-wall-gotele.xpm
+		WE ./textures/texture-wall-gotele.xpm
+		S ./textures/texture-wall-gotele.xpm
+		C 255,				200,160
+			F 	122,			122,			122
+	
+111111
+100001
+102001
+100001    111
+1000011111101    11
+100W000E00001   101
+1000001111101   111
+1000001   111
+1111111
