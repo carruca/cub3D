@@ -206,10 +206,12 @@ typedef struct s_map
 
 typedef struct s_pos
 {
-	double	x;
-	double	y;
-	double	mspeed;
-	double	rspeed;
+	double		x;
+	double		y;
+	double		mspeed;
+	double		rspeed;
+	unsigned	move;
+	unsigned	turn;
 //	float	px;
 //	float	py;
 //	float	pdx;
