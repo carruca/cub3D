@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 11:44:18 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/21 17:29:54 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/22 14:59:13 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,9 @@ void	maze_raycast(t_all *all)
 			all->ray.wall.dist = (all->maze.x - all->pos.x + (1 - all->ray.step.x) / 2) / all->ray.dir.x;
 		else
 			all->ray.wall.dist = (all->maze.y - all->pos.y + (1 - all->ray.step.y) / 2) / all->ray.dir.y;
+		//store distance in zbuffer(depth) for sprites
+		all->draw.z_buffer[all->ray.x] = all->ray.wall.dist;
+//		printf("z_buffer=%f\n", all->draw.z_buffer[all->ray.x]);
 	//	printf("Ymaze=%d\nYpos=%f\nYstep=%d\nYraydir=%f\n", all->maze.y, all->pos.y, all->ray.step.y, all->ray.dir.y);
 	//	printf("walldist=%f\n", all->ray.wall.dist);
 		//calculate hight of line to draw on screen
@@ -321,7 +324,8 @@ int		init(t_all *all)
 //	all->dir.x = -1;
 //	all->dir.y = 0;
 //	all->plane.x = 0;
-//	all->plane.y = 0.66;
+//	all->plane.y = 0.66;	
+	all->draw.z_buffer = (double*)malloc(all->win.width * sizeof(double));
 	all->ray.cam.x = 0;
 	all->ray.dir.x = 0;
 	all->ray.dir.y = 0;
@@ -337,7 +341,7 @@ int		init(t_all *all)
 	all->draw.end = 0;
 //	all->time = 0;
 //	all->oldtime = 0;
-	all->pos.mspeed = 0.55;
+	all->pos.mspeed = 0.35;
 	all->pos.rspeed = 0.15;
 //	all->ray.x = 0;
 	return (1);

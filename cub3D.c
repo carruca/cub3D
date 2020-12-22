@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 13:24:57 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/21 14:13:38 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/22 15:27:28 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -503,8 +503,8 @@ void	player_control(t_all *all, int row, int column)
 	all->control_player++;
 	if (all->control_player > 1)
 		error_put(11);
-	all->pos.x = row;
-	all->pos.y = column;
+	all->pos.x = (double)row;
+	all->pos.y = (double)column;
 	if (all->map[row][column] == 'N')
 	{
 		direction_control(all, -1, 0);
@@ -527,6 +527,24 @@ void	player_control(t_all *all, int row, int column)
 	}
 }
 
+void	sprite_control(t_all *all, int row, int column)
+{
+	all->sprite[all->sprite_count].x = (double)row;
+	all->sprite[all->sprite_count].y = (double)column;
+//	printf("sprite_count=%d\nXsprite=%f\nYsprite=%f\n", all->sprite_count, all->sprite[all->sprite_count].x, all->sprite[all->sprite_count].y);
+	all->sprite_count++;
+}
+
+void	sprite_init(t_all *all, int count)
+{
+	if (!(all->sprite = (t_dvec*)malloc(count * sizeof(t_dvec))))
+		error_put(12);
+	if (!(all->sprite_order = (int*)malloc(count * sizeof(int))))
+		error_put(12);
+	if (!(all->sprite_dist = (double*)malloc(count * sizeof(double))))
+		error_put(12);
+}
+
 // Incluida en parse_map.c
 int		is_valid_map(t_all *all)
 {
@@ -540,6 +558,7 @@ int		is_valid_map(t_all *all)
 	//	exit(0);
 	}
 	all->control_player = 0;
+	all->sprite_count = 0;
 	i = 0;
 	while (i < all->map_rows)
 	{
@@ -551,6 +570,8 @@ int		is_valid_map(t_all *all)
 			if (all->map[i][j] == 'N' || all->map[i][j] == 'S' ||
 					all->map[i][j] == 'W' || all->map[i][j] == 'E')
 				player_control(all, i, j);
+			if (all->map[i][j] == '2')
+				sprite_control(all, i, j);
 			j++;
 		}
 		i++;
@@ -659,13 +680,9 @@ int		is_map(char *line, t_all *all)
 			if (line[i] != ' ' && line[i] != '0' && line[i] != '1' &&
 					line[i] != '2' && line[i] != 'N' && line[i] != 'S'
 					&& line[i] != 'E' && line[i] != 'W' && line[i] != '\t')
-			{
 				error_put(10);
-			//	ft_putstr_fd("Error\nInvalid map arguments\n", 1);
-			//	exit(0);
-			}
 			else if (line[i] == '2')
-				all->sprites++;
+				all->sprite_count++;
 			i++;
 		}
 		i = ft_strlen(line);
@@ -784,12 +801,12 @@ int		main(int argc, char **argv)
 	fd = 0;
 	line = NULL;
 	out = 1;
-	ft_bzero(&all, sizeof(t_all));
 //	if (!(all = (t_all*)malloc(sizeof(t_all))))
 //		return (0);
-	all.control = 0;
-	all.map_rows = 0;
-	all.f_c = 0;
+	ft_bzero(&all, sizeof(t_all));
+//	all.control = 0;
+//	all.map_rows = 0;
+//	all.f_c = 0;
 	if (argc < 2 || argc > 3)
 	{
 		error_put(1);
@@ -832,9 +849,10 @@ int		main(int argc, char **argv)
 //	printf("%i\n", all.control);
 //	printf("%i\n", all.map_rows);
 //	printf("%i\n", all.map_columns);
-//	printf("%i\n", all.sprites);
 //	printf("%s\n", all.tex[4].path);
+	sprite_init(&all, all.sprite_count);
 	init_map(&all, argv[1]);
+//	printf("%d\n", all.sprite_count);
 	window_init(&all);
 //	all->mlx_ptr = mlx_init();
 //	all->win_ptr = mlx_new_window(all->mlx_ptr, all->win.width, all->win.height, "cub3D");

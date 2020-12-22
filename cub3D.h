@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/21 17:12:54 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/22 16:18:06 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_delta
 	double	y;
 }	t_delta;
 */
+
 typedef struct s_wall
 {
 	double	dist;
@@ -183,6 +184,7 @@ typedef struct s_draw
 	int		end;
 	int		f_rgb;
 	int		c_rgb;
+	double	*z_buffer;
 //	t_vec	point1;
 //	t_vec	point2;
 //	t_ray	ray;
@@ -206,12 +208,10 @@ typedef struct s_map
 
 typedef struct s_pos
 {
-	double		x;
-	double		y;
-	double		mspeed;
-	double		rspeed;
-	unsigned	move;
-	unsigned	turn;
+	double	x;
+	double	y;
+	double	mspeed;
+	double	rspeed;
 //	float	px;
 //	float	py;
 //	float	pdx;
@@ -223,38 +223,41 @@ typedef struct s_pos
 
 typedef struct s_all
 {
-//	int		x;
-//	int		y;
-//	void	*win_ptr;
-//	void	*mlx_ptr;
-	t_mlx	mlx;
-	t_win	win;
-	t_img	img;
-	t_ivec	maze;
-	t_pos	pos;
-	t_dvec	dir;
-	t_dvec	plane;
-	t_tex	tex[5];
-	t_draw	draw;
-	t_ray	ray;
-//	double	time;
-//	double	oldtime;
-	char	**map;
-	int		is_map;
-//	int		bol;
-	int		control;		
-	int		map_rows;
-	int		map_columns;
-	int		sprites;
-	int		f_c;
-	int		rows;
-	int		control_player;
-	int		color;
+//	int			x;
+//	int			y;
+//	void		*win_ptr;
+//	void		*mlx_ptr;
+	t_mlx		mlx;
+	t_win		win;
+	t_img		img;
+	t_ivec		maze;
+	t_pos		pos;
+	t_dvec		dir;
+	t_dvec		plane;
+	t_tex		tex[5];
+	t_draw		draw;
+	t_ray		ray;
+	t_dvec		*sprite;
+	int			sprite_count;	
+	int			*sprite_order;
+	double		*sprite_dist;
+	char		**map;
+	int			is_map;
+	int			control;		
+	int			map_rows;
+	int			map_columns;
+//	int			sprites;
+	int			f_c;
+	int			rows;
+	int			control_player;
+	int			color;
 }	t_all;
 
 //int	init_mlx(t_all *all);
 int		window_init(t_all *all);
 void	error_put(int errno);
 int		program_exit(t_all *all);
+void	sprite_raycast(t_all *all);
+double	dist(double x1, double x2);
 
 #endif

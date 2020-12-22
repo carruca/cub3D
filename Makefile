@@ -6,7 +6,7 @@
 #    By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/16 12:43:15 by tsierra-          #+#    #+#              #
-#    Updated: 2020/12/08 11:44:15 by tsierra-         ###   ########.fr        #
+#    Updated: 2020/12/22 15:33:05 by tsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,14 @@ NAME = cub3D
 
 SRC = raycaster.c \
 	  cub3D.c \
-	  cub3D_main.c
+	  cub3D_main.c \
+	  sprites.c
 OBJ = $(SRC:.c=.o)
 LIBFTDIR = libft/
 MLXDIR = mlx/
 
 CC = gcc
-CFLAGS = -Wall -Wextra #-g3 -fsanitize=address #-Werror
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 LINKS = -I $(LIBFTDIR) -L $(LIBFTDIR) \
 		-I $(MLXDIR) -L $(MLXDIR) \
 		-lmlx -framework OpenGL -framework AppKit
