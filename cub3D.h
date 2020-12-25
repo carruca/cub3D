@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/22 16:18:06 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/25 19:20:35 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-//	int		offset;
 }	t_img;
 
 typedef struct s_color
@@ -62,15 +61,8 @@ typedef struct s_color
 	unsigned	b;
 }	t_color;
 
-
-
 typedef struct s_tex
 {
-//	char	*no_path;
-//	char	*so_path;
-//	char	*we_path;
-//	char	*ea_path;
-//	char	*s_path;
 	char	*path;
 	int		x;
 	int		y;
@@ -79,16 +71,6 @@ typedef struct s_tex
 	t_img	*img;
 	int		width;
 	int		height;
-//	int		*buffer;
-//	int		bpp;
-//	int		size_line;
-//	int		endian;
-//	int		f_red;
-//	int		f_green;
-//	int		f_blue;
-//	int		c_red;
-//	int		c_green;
-//	int		c_blue;
 }	t_tex;
 
 typedef	struct s_dvec
@@ -103,37 +85,15 @@ typedef struct s_ivec
 	int	y;
 }	t_ivec;
 
-/*
-typedef struct s_plane
-{
-	double	x;
-	double	y;
-}	t_plane;
-*/
-/*
-typedef struct s_dir
-{
-	double	x;
-	double	y;
-}	t_dir;
-*/
 typedef	struct s_cam
 {
 	double	x;
-//	double	y;
 }	t_cam;
 
 typedef struct s_side
 {
 	t_dvec	dist;
 }	t_side;
-/*
-typedef struct s_delta
-{
-	double	x;
-	double	y;
-}	t_delta;
-*/
 
 typedef struct s_wall
 {
@@ -146,48 +106,36 @@ typedef struct s_wall
 typedef struct s_ray
 {
 	int		x;
-/*	int		dof;
-	int		mx;
-	int		my;
-	int		mp;
-	int		size;
-	int		speed;
-	float	x;
-	float	y;
-	float	a;
-	float	xo;
-	float	yo;
-	float	tan;
-	float	ntan;
-	float	dish;
-	float	hx;
-	float	hy;
-	float	disv;
-	float	vx;
-	float	vy;
-	float	dist;
-	float	lineh;
-	float	lineo;*/
 	t_dvec	dir;
 	t_cam	cam;
-//	t_plane	plane;
 	t_side	side;
 	t_dvec	delta;
 	t_wall	wall;
 	t_ivec	step;
 }	t_ray;
 
+typedef struct s_sprite
+{
+	t_ivec	start;
+	t_ivec	end;
+	int		width;
+	int		height;	
+	double	x;
+	double	y;
+	double	inver;
+	t_dvec	transform;
+	int		win;
+}	t_sprite;
+
 typedef struct s_draw
 {
-	int		height;
-	int		start;
-	int		end;
-	int		f_rgb;
-	int		c_rgb;
-	double	*z_buffer;
-//	t_vec	point1;
-//	t_vec	point2;
-//	t_ray	ray;
+	int			height;
+	int			start;
+	int			end;
+	int			f_rgb;
+	int			c_rgb;
+	double		*z_buffer;
+	t_sprite	sprite;
 }	t_draw;
 /*
 typedef struct s_color
@@ -198,6 +146,7 @@ typedef struct s_color
 	int	b;
 }	t_color;
 */
+/*
 typedef struct s_map
 {
 	int	x;
@@ -205,26 +154,17 @@ typedef struct s_map
 //	int	size;
 //	int	map[64];
 }	t_map;
-
+*/
 typedef struct s_pos
 {
 	double	x;
 	double	y;
 	double	mspeed;
 	double	rspeed;
-//	float	px;
-//	float	py;
-//	float	pdx;
-//	float	pdy;
-//	float	pa;
-//	float	fova;
-//	float	raya;
 }	t_pos;
 
 typedef struct s_all
 {
-//	int			x;
-//	int			y;
 //	void		*win_ptr;
 //	void		*mlx_ptr;
 	t_mlx		mlx;
@@ -246,7 +186,6 @@ typedef struct s_all
 	int			control;		
 	int			map_rows;
 	int			map_columns;
-//	int			sprites;
 	int			f_c;
 	int			rows;
 	int			control_player;
@@ -259,5 +198,6 @@ void	error_put(int errno);
 int		program_exit(t_all *all);
 void	sprite_raycast(t_all *all);
 double	dist(double x1, double x2);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

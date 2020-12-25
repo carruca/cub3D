@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 13:24:57 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/22 15:27:28 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/25 20:11:02 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -503,8 +503,8 @@ void	player_control(t_all *all, int row, int column)
 	all->control_player++;
 	if (all->control_player > 1)
 		error_put(11);
-	all->pos.x = (double)row;
-	all->pos.y = (double)column;
+	all->pos.x = (double)row + 0.5;
+	all->pos.y = (double)column + 0.5;
 	if (all->map[row][column] == 'N')
 	{
 		direction_control(all, -1, 0);
@@ -529,8 +529,8 @@ void	player_control(t_all *all, int row, int column)
 
 void	sprite_control(t_all *all, int row, int column)
 {
-	all->sprite[all->sprite_count].x = (double)row;
-	all->sprite[all->sprite_count].y = (double)column;
+	all->sprite[all->sprite_count].x = (double)row + 0.5;
+	all->sprite[all->sprite_count].y = (double)column + 0.5;
 //	printf("sprite_count=%d\nXsprite=%f\nYsprite=%f\n", all->sprite_count, all->sprite[all->sprite_count].x, all->sprite[all->sprite_count].y);
 	all->sprite_count++;
 }
