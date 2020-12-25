@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 11:44:18 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/22 14:59:13 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/25 20:11:51 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ int		display(t_all *all)
 //	screen_draw(all);
 //	vertical_draw(all, 639,225, 255, 0x7F8000);
 	maze_raycast(all);
+	sprite_raycast(all);
 //	printf("Entra en el loop\n");
 	mlx_clear_window(all->mlx.ptr, all->win.ptr);
 	mlx_put_image_to_window(all->mlx.ptr, all->win.ptr, all->img.ptr, 0, 0);

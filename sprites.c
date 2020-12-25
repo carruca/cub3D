@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:14:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/23 17:13:27 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/25 20:23:25 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ void	sprite_draw(t_all *all)
 	int	color;
 
 	x = all->draw.sprite.start.x;
-	while (x < all->draw.sprite.end.x)
+	while (x < all->draw.sprite.end.x && x <= all->win.width)
 	{
-		all->tex[4].x = (int)(256 * (x - (all->draw.sprite.win - all->draw.sprite.width / 2)) * all->tex[4].width / all->draw.sprite.width) / 256;
-		if (x > 0 && x < all->win.height && all->draw.sprite.transform.y > 0 && all->draw.sprite.transform.y < all->draw.z_buffer[x])
+		all->tex[4].x = (int)(256 * ((int)x - (all->draw.sprite.win - all->draw.sprite.width / 2)) * all->tex[4].width / all->draw.sprite.width) / 256;
+		if (x > 0 && x < all->win.height && all->draw.sprite.transform.y > 0 && all->draw.sprite.transform.y < all->draw.z_buffer[(int)x])
 		{
 			y = all->draw.sprite.start.y;
-			while (y < all->draw.sprite.end.y)
+			while (y < all->draw.sprite.end.y && y <= all->win.height)
 			{
-				all->tex[4].y = (((y * 256 - all->win.height * 128 + all->draw.sprite.height * 128) * all->tex[4].height) / all->draw.sprite.height) / 256;
+				all->tex[4].y = ((((int)y * 256 - all->win.height * 128 + all->draw.sprite.height * 128) * all->tex[4].height) / all->draw.sprite.height) / 256;
 				color = all->tex[4].img->buff[all->tex[4].width * all->tex[4].y + all->tex[4].x];
 				if (color != 0)
 					my_mlx_pixel_put(&all->img, x, y, color);
@@ -91,7 +91,7 @@ void	sprite_raycast(t_all *all)
 		all->draw.sprite.inver = 1.0 / (all->plane.x * all->dir.y - all->dir.x * all->plane.y);
 
 		all->draw.sprite.transform.x = all->draw.sprite.inver * (all->dir.y * all->draw.sprite.x - all->dir.x * all->draw.sprite.y);
-		all->draw.sprite.transform.y = all->draw.sprite.inver * (-1 * all->plane.y * all->draw.sprite.x + all->plane.x * all->draw.sprite.y);
+		all->draw.sprite.transform.y = all->draw.sprite.inver * (-1.0 * all->plane.y * all->draw.sprite.x + all->plane.x * all->draw.sprite.y);
 
 		all->draw.sprite.win = (int)((all->win.width / 2) * (1 + all->draw.sprite.transform.x / all->draw.sprite.transform.y));
 
@@ -105,11 +105,11 @@ void	sprite_raycast(t_all *all)
 		if (all->draw.sprite.end.y >= all->win.height)
 			all->draw.sprite.end.y = all->win.height - 1;
 		//calculate width of the sprite
-		all->draw.sprite.width = abs((int)(all->win.width / all->draw.sprite.transform.y));
+		all->draw.sprite.width = abs((int)(all->win.height / all->draw.sprite.transform.y));
 		all->draw.sprite.start.x = all->draw.sprite.win - (all->draw.sprite.width / 2);
 		if (all->draw.sprite.start.x < 0)
 			all->draw.sprite.start.x = 0;
-		all->draw.sprite.end.x = all->draw.sprite.start.x + all->draw.sprite.width;
+		all->draw.sprite.end.x = all->draw.sprite.width / 2 + all->draw.sprite.win;
 		if (all->draw.sprite.end.x >= all->win.width)
 			all->draw.sprite.end.x = all->win.width - 1;
 
