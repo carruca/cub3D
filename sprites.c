@@ -50,11 +50,11 @@ void	sprite_draw(t_all *all)
 	x = all->draw.sprite.start.x;
 	while (x < all->draw.sprite.end.x && x <= all->win.width)
 	{
-		all->tex[4].x = (int)(256 * ((int)x - (all->draw.sprite.win - all->draw.sprite.width / 2)) * all->tex[4].width / all->draw.sprite.width) / 256;
-		if (x > 0 && x < all->win.height && all->draw.sprite.transform.y > 0 && all->draw.sprite.transform.y < all->draw.z_buffer[(int)x])
+		all->tex[4].x = (int)(256 * (x - (all->draw.sprite.win - all->draw.sprite.width / 2)) * all->tex[4].width / all->draw.sprite.width) / 256;
+		if (x >= 0 && all->draw.sprite.transform.y > 0 && all->draw.sprite.transform.y < all->draw.z_buffer[x])
 		{
 			y = all->draw.sprite.start.y;
-			while (y < all->draw.sprite.end.y && y <= all->win.height)
+			while (y < all->draw.sprite.end.y && y <= all->win.height + 1)
 			{
 				all->tex[4].y = ((((int)y * 256 - all->win.height * 128 + all->draw.sprite.height * 128) * all->tex[4].height) / all->draw.sprite.height) / 256;
 				color = all->tex[4].img->buff[all->tex[4].width * all->tex[4].y + all->tex[4].x];
@@ -67,20 +67,10 @@ void	sprite_draw(t_all *all)
 	}
 }
 
-void	sprite_raycast(t_all *all)
+void	sprite_projection(t_all *all)
 {
-	int		i;
+	int	i;
 
-	i = 0;
-	while (i < all->sprite_count)
-	{
-		all->sprite_order[i] = i;
-		all->sprite_dist[i] = pow(all->pos.x - all->sprite[i].x, 2) + pow(all->pos.y - all->sprite[i].y, 2);
-		i++;
-	}
-	sprite_sort(all->sprite_order, all->sprite_dist, all->sprite_count);
-
-	//after sorting the sprites, do the projection and draw them
 	i = 0;
 	while (i < all->sprite_count)
 	{
@@ -103,7 +93,7 @@ void	sprite_raycast(t_all *all)
 			all->draw.sprite.start.y = 0;
 		all->draw.sprite.end.y = all->draw.sprite.start.y + all->draw.sprite.height;
 		if (all->draw.sprite.end.y >= all->win.height)
-			all->draw.sprite.end.y = all->win.height - 1;
+			all->draw.sprite.end.y = all->win.height;
 		//calculate width of the sprite
 		all->draw.sprite.width = abs((int)(all->win.height / all->draw.sprite.transform.y));
 		all->draw.sprite.start.x = all->draw.sprite.win - (all->draw.sprite.width / 2);
@@ -111,10 +101,27 @@ void	sprite_raycast(t_all *all)
 			all->draw.sprite.start.x = 0;
 		all->draw.sprite.end.x = all->draw.sprite.width / 2 + all->draw.sprite.win;
 		if (all->draw.sprite.end.x >= all->win.width)
-			all->draw.sprite.end.x = all->win.width - 1;
+			all->draw.sprite.end.x = all->win.width;
 
 		//loop throught every vertical stripe of the sprite on screen
 		sprite_draw(all);
 		i++;
 	}
+}
+
+void	sprite_raycast(t_all *all)
+{
+	int		i;
+
+	i = 0;
+	while (i < all->sprite_count)
+	{
+		all->sprite_order[i] = i;
+		all->sprite_dist[i] = pow(all->pos.x - all->sprite[i].x, 2) + pow(all->pos.y - all->sprite[i].y, 2);
+		i++;
+	}
+	sprite_sort(all->sprite_order, all->sprite_dist, all->sprite_count);
+
+	//after sorting the sprites, do the projection and draw them
+	sprite_projection(all);
 }

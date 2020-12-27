@@ -1,9 +1,9 @@
 R 1080 720
-NO ./textures/texture-wall-gotele.xpm
-SO ./textures/texture-wall-gotele.xpm
-EA ./textures/texture-wall-gotele.xpm
-WE ./textures/texture-wall-gotele.xpm
-S ./textures/texture-wall-gotele.xpm
+NO ./textures/wolf3D/colorstone.xpm
+SO ./textures/wolf3D/purplestone.xpm
+EA ./textures/wolf3D/redbrick.xpm
+WE ./textures/wolf3D/bluestone.xpm
+S ./textures/wolf3D/pillar.xpm
 C 255,0,255
 F 0,255,0
 
