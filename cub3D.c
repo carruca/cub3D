@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 13:24:57 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/25 20:11:02 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:36:49 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 // Incluida en la libft
 /*
 int		ft_only_spaces_line(char *str)

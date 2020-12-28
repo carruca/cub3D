@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 17:14:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/25 20:23:25 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:37:21 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 //sort sprites from far in first position to the close in last.
 void	sprite_sort(int *order, double *dist, int count)

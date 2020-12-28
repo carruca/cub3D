@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:50:47 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/07 14:27:48 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:38:56 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {

@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 12:26:31 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/11/05 14:01:27 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:37:59 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 int	key_hook(int keycode, t_mlx *mlx)
 {

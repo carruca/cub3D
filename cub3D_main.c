@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 10:50:52 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/16 12:21:25 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:37:09 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 int		program_exit(t_all *all)
 {

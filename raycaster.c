@@ -6,11 +6,11 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 11:44:18 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/25 20:11:51 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/28 13:36:55 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 double	norm(double angle)
 {
@@ -342,7 +342,7 @@ int		init(t_all *all)
 	all->draw.end = 0;
 //	all->time = 0;
 //	all->oldtime = 0;
-	all->pos.mspeed = 0.35;
+	all->pos.mspeed = 0.25;
 	all->pos.rspeed = 0.15;
 //	all->ray.x = 0;
 	return (1);
