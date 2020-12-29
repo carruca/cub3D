@@ -1,4 +1,4 @@
-42 project
+42 project\n
 Download the whole repository
 Give the command make inside your repository
 Execute ./cub3D next to one config file like maps/map1.cub
