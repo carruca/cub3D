@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/29 14:10:27 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/29 16:35:03 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,9 @@ typedef struct s_draw
 
 typedef struct s_bmp
 {
-	int	width;
-	int	height;
+	int				width;
+	int				height;
+	int				padding;
 	unsigned char	*fileheader;
 	unsigned char	*infoheader;
 }	t_bmp;
@@ -208,5 +209,6 @@ int		program_exit(t_all *all);
 void	sprite_raycast(t_all *all);
 double	dist(double x1, double x2);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		bitmap_save(t_all *all);
 
 #endif
