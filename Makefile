@@ -6,7 +6,7 @@
 #    By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/16 12:43:15 by tsierra-          #+#    #+#              #
-#    Updated: 2020/12/22 15:33:05 by tsierra-         ###   ########.fr        #
+#    Updated: 2020/12/29 14:21:34 by tsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = cub3D
 SRC = raycaster.c \
 	  cub3D.c \
 	  cub3D_main.c \
-	  sprites.c
+	  sprites.c \
+	  bitmap.c
 OBJ = $(SRC:.c=.o)
 LIBFTDIR = libft/
 MLXDIR = mlx/

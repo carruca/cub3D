@@ -1,4 +1,4 @@
-R 640 480
+R 6640 4480
 F 255,150,0
 NO ./textures/wolf3D/wood.xpm
 SO ./textures/wolf3D/greystone.xpm

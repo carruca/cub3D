@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/25 19:20:35 by tsierra-         ###   ########.fr       */
+/*   Updated: 2020/12/29 14:10:27 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,15 @@ typedef struct s_draw
 	double		*z_buffer;
 	t_sprite	sprite;
 }	t_draw;
+
+typedef struct s_bmp
+{
+	int	width;
+	int	height;
+	unsigned char	*fileheader;
+	unsigned char	*infoheader;
+}	t_bmp;
+
 /*
 typedef struct s_color
 {
