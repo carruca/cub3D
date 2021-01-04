@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/29 16:35:03 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:41:58 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define A_KEY		0
 # define S_KEY		1
 # define D_KEY		2
-# define UP_KEY		126
-# define DOWN_KEY	125
+//# define UP_KEY	126
+//# define DOWN_KEY	125
 # define LEFT_KEY	123
 # define RIGHT_KEY	124
 

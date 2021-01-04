@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 11:44:18 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/12/28 13:36:55 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/04 15:50:27 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		key_press(int keycode, t_all *all)
 		if (all->map[(int)all->pos.x][(int)(all->pos.y + all->dir.y * all->pos.mspeed)] != '1')
 			all->pos.y += all->dir.y * all->pos.mspeed;
 	}
-	if (keycode == A_KEY)
+	if (keycode == LEFT_KEY)
 	{
 		olddir_x = all->dir.x;
 		all->dir.x = all->dir.x * cos(all->pos.rspeed) - all->dir.y * sin(all->pos.rspeed);
@@ -48,6 +48,13 @@ int		key_press(int keycode, t_all *all)
 		all->plane.y = oldplane_x * sin(all->pos.rspeed) + all->plane.y * cos(all->pos.rspeed);
 //		printf("Xolddir=%f\nXdir=%f\nYdir=%f\nRotSpeed=%f\nXoldplane=%f\nXplane=%f\nYplane=%f\n", olddir_x, all->dir.x, all->dir.y, all->pos.rspeed, oldplane_x, all->plane.x, all->plane.y);
 	}
+	if (keycode == D_KEY)
+	{
+		if (all->map[(int)(all->pos.x + all->plane.x * all->pos.mspeed)][(int)all->pos.y] != '1')
+			all->pos.x += all->plane.x * all->pos.mspeed;
+		if (all->map[(int)all->pos.x][(int)(all->pos.y + all->plane.y * all->pos.mspeed)] != '1')
+			all->pos.y += all->plane.y * all->pos.mspeed;
+	}
 	if (keycode == S_KEY)
 	{
 		if (all->map[(int)(all->pos.x - all->dir.x * all->pos.mspeed)][(int)all->pos.y] != '1')
@@ -55,7 +62,7 @@ int		key_press(int keycode, t_all *all)
 		if (all->map[(int)all->pos.x][(int)(all->pos.y - all->dir.y * all->pos.mspeed)] != '1')
 			all->pos.y -= all->dir.y * all->pos.mspeed;
 	}
-	if (keycode == D_KEY)
+	if (keycode == RIGHT_KEY)
 	{
 		olddir_x = all->dir.x;
 		all->dir.x = all->dir.x * cos(-all->pos.rspeed) - all->dir.y * sin(-all->pos.rspeed);
@@ -63,6 +70,13 @@ int		key_press(int keycode, t_all *all)
 		oldplane_x = all->plane.x;
 		all->plane.x = all->plane.x * cos(-all->pos.rspeed) - all->plane.y * sin(-all->pos.rspeed);
 		all->plane.y = oldplane_x * sin(-all->pos.rspeed) + all->plane.y * cos(-all->pos.rspeed);
+	}
+	if (keycode == A_KEY)
+	{
+		if (all->map[(int)(all->pos.x - all->plane.x * all->pos.mspeed)][(int)all->pos.y] != '1')
+			all->pos.x -= all->plane.x * all->pos.mspeed;
+		if (all->map[(int)all->pos.x][(int)(all->pos.y - all->plane.y * all->pos.mspeed)] != '1')
+			all->pos.y -= all->plane.y * all->pos.mspeed;
 	}
 	if (keycode == ESC_KEY)
 		program_exit(all);
