@@ -853,8 +853,8 @@ int		main(int argc, char **argv)
 	sprite_init(&all, all.sprite_count);
 	init_map(&all, argv[1]);
 //	printf("%d\n", all.sprite_count);
-	if (!bitmap_save(&all))
-		return (0);
+	if (argc == 3 && ft_strcmp(argv[2], "--save") == 0)
+		bitmap_save(&all);
 	window_init(&all);
 //	all->mlx_ptr = mlx_init();
 //	all->win_ptr = mlx_new_window(all->mlx_ptr, all->win.width, all->win.height, "cub3D");

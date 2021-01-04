@@ -29,7 +29,7 @@ void			pixel_data_write(t_all *all, t_bmp bmp)
 	}
 }*/
 
-unsigned char	*infoheader_create(t_bmp bmp)
+unsigned char	*infoheader_write(t_bmp bmp)
 {
 	static unsigned char	infoheader[40];
 
@@ -44,11 +44,11 @@ unsigned char	*infoheader_create(t_bmp bmp)
 	infoheader[10] = (unsigned char)(bmp.height >> 8);
 	infoheader[11] = (unsigned char)bmp.height;
 	infoheader[12] = (unsigned char)1;
-	infoheader[14] = (unsigned char)24;
+	infoheader[14] = (unsigned char)32;
 	return (infoheader);
 }
 
-unsigned char	*fileheader_create(t_bmp bmp)
+unsigned char	*fileheader_write(t_bmp bmp)
 {
 	static unsigned char	fileheader[14];
 	int						size_file;
@@ -75,12 +75,19 @@ int				bitmap_save(t_all *all)
 	ft_bzero(&bmp, sizeof(bmp));
 	bmp.width = all->win.width;
 	bmp.height = all->win.height;
-//	padding = 
-	bmp.fileheader = fileheader_create(bmp);
+	bmp.fileheader = fileheader_write(bmp);
 	write(fd, bmp.fileheader, 14);
-	bmp.infoheader = infoheader_create(bmp);
+	bmp.infoheader = infoheader_write(bmp);
 	write(fd, bmp.infoheader, 40);
-	ft_putstr_fd("Screenshot created!\n", 1);
+	all->mlx.ptr = mlx_init();
+	all->win.ptr = mlx_new_window(all->mlx.ptr, all->win.width, all->win.height, "cub3D");
+	init(all);
+	texture_init(all);
+	image_create(all);
+
+	mlx_destroy_image(all->mlx.ptr, all->img.ptr);
+	ft_putstr_fd("Bitmap image file created!\n", 1);
 	close(fd);
+	program_exit(all);
 	return (1);
 }

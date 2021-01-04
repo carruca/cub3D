@@ -166,7 +166,7 @@ void	render(t_all *all)
 	x = 0;
 }*/
 
-void	maze_raycast(t_all *all)
+void	wall_raycast(t_all *all)
 {
 	int	tex;
 
@@ -300,14 +300,23 @@ void	maze_raycast(t_all *all)
 	}
 }
 
-int		display(t_all *all)
+void	image_create(t_all *all)
 {
 	all->img.ptr = mlx_new_image(all->mlx.ptr, all->win.width, all->win.height);
 	all->img.buffer = mlx_get_data_addr(all->img.ptr, &all->img.bits_per_pixel, &all->img.size_line, &all->img.endian);
+	wall_raycast(all);
+	sprite_raycast(all);
+}
+
+int		display(t_all *all)
+{
+	image_create(all);
+//	all->img.ptr = mlx_new_image(all->mlx.ptr, all->win.width, all->win.height);
+//	all->img.buffer = mlx_get_data_addr(all->img.ptr, &all->img.bits_per_pixel, &all->img.size_line, &all->img.endian);
 //	screen_draw(all);
 //	vertical_draw(all, 639,225, 255, 0x7F8000);
-	maze_raycast(all);
-	sprite_raycast(all);
+//	wall_raycast(all);
+//	sprite_raycast(all);
 //	printf("Entra en el loop\n");
 	mlx_clear_window(all->mlx.ptr, all->win.ptr);
 	mlx_put_image_to_window(all->mlx.ptr, all->win.ptr, all->img.ptr, 0, 0);
