@@ -6,7 +6,7 @@
 #    By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/07 17:05:33 by tsierra-          #+#    #+#              #
-#    Updated: 2020/11/27 14:43:59 by tsierra-         ###   ########.fr        #
+#    Updated: 2021/01/07 17:50:41 by tsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ LSOURCE = ft_memset.c \
 		  ft_count_char_in_str.c \
 		  ft_is_color_range.c \
 		  ft_only_spaces_line.c \
-		  ft_str_tab_rem.c \
+		  ft_str_tab_remove.c \
 		  ft_is_valid_file.c
 
 OBJS = $(LSOURCE:.c=.o)

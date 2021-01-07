@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 12:15:52 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/11/27 14:43:03 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:50:15 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			ft_file_format_cmp(char *str, char *format);
 int			ft_count_char_in_str(char *str, char c);
 int			ft_is_color_range(int color);
 int			ft_only_spaces_line(char *line);
-char		*ft_str_tab_rem(char *str);
+char		*ft_str_tab_remove(char *str);
 int			ft_is_valid_file(char *path);
 
 #endif

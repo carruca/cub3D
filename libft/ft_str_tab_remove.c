@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_tab_rem.c                                   :+:      :+:    :+:   */
+/*   ft_str_tab_remove.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 13:43:30 by tsierra-          #+#    #+#             */
-/*   Updated: 2020/11/27 14:04:54 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:49:27 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	ft_strlen_no_tab(char *str)
 	return (len);
 }
 
-char			*ft_str_tab_rem(char *str)
+char			*ft_str_tab_remove(char *str)
 {
 	size_t	len;
 	size_t	i;

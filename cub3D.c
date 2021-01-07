@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 13:24:57 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/04 14:24:58 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:51:17 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -735,7 +735,7 @@ int		parse_line(char *line, t_all *all)
 		is_map(line, all);
 	else
 	{
-		tmp = ft_str_tab_rem(line);
+		tmp = ft_str_tab_remove(line);
 		tmp2 = ft_strtrim(tmp, " ");
 		free(tmp);
 		if (!ft_memcmp(tmp2, "F ", 2) || !ft_memcmp(tmp2, "C ", 2))
