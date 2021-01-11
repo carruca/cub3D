@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/07 17:29:02 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/08 15:40:57 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,15 @@ typedef struct s_draw
 	t_sprite		sprite;
 }					t_draw;
 
+typedef struct s_bmp
+{
+	int				width;
+	int				height;
+	int				padding;
+	unsigned char	*fileheader;
+	unsigned char	*infoheader;
+}					t_bmp;
+
 typedef struct s_pos
 {
 	double			x;
@@ -146,8 +155,6 @@ typedef struct s_pos
 
 typedef struct s_all
 {
-//	void			*win_ptr;
-//	void			*mlx_ptr;
 	t_mlx			mlx;
 	t_win			win;
 	t_img			img;
@@ -159,6 +166,7 @@ typedef struct s_all
 	t_draw			draw;
 	t_ray			ray;
 	t_dvec			*sprite;
+	int				keyboard[125];
 	int				sprite_count;	
 	int				*sprite_order;
 	double			*sprite_dist;
@@ -173,15 +181,57 @@ typedef struct s_all
 	int				color;
 }					t_all;
 
-int					window_init(t_all *all);
+int					color_rgb_to_hex(unsigned r, unsigned g, unsigned b);
+int					color_floor_parse(char **colors, t_all *all);
+int					color_ceilling_parse(char **colors, t_all *all);
+int					color_parse(char *params, t_all *all);
+int					color_pre_parse(char *params, t_all *all);
+void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void				vertical_draw(t_all *all, int x, int num);
+void				sprite_draw(t_all *all);
+void				player_move(t_all *all, double x, double y);
+void				player_rotate(t_all *all, double speed);
+int					key_core(t_all *all);
+int					key_release(int kecode, t_all *all);
+int					key_press(int keycode, t_all *all);
 void				error_put(int errno);
 int					program_exit(t_all *all);
+int					is_surrounded(t_all *all, int x, int y);
+void				is_valid_map(t_all *all);
+int					map_create(char *line, t_all *all);
+int					map_parse(char *line, t_all *all);
+int					map_init(t_all *all, char *path);
+int					textures_parse(char **params, t_all *all);
+int					params_parse(char **params, t_all *all);
+int					line_parse(char *line, t_all *all);
+int					line_pre_parse(char *line, t_all *all);
+int					config_parse(t_all *all, char *path);
+int					is_map(char *line, t_all *all);
+int					resolution_parse(char **params, t_all *all);
+void				direction_control(t_all *all, double x, double y);
+void				plane_control(t_all *all, double x, double y);
+void				player_control(t_all *all, int row, int column);
+void				sprite_control(t_all *all, int row, int column);
+void				sprite_init(t_all *all, int count);
 void				sprite_raycast(t_all *all);
-double				dist(double x1, double x2);
-void				my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int					bitmap_save(t_all *all);
-void				image_create(t_all *all);
-int					init(t_all *all);
 void				texture_init(t_all *all);
+void				texture_calculate(t_all *all, int i);
+int					texture_sort(t_all *all);
+int					north_texture_parse(char *param, t_all *all);
+int					south_texture_parse(char *param, t_all *all);
+int					east_texture_parse(char *param, t_all *all);
+int					west_texture_parse(char *param, t_all *all);
+int					sprite_texture_parse(char *param, t_all *all);
+void				wall_raycast(t_all *all);
+void				image_render(t_all *all);
+int					display(t_all *all);
+void				speed_init(t_all *all);
+//void				window_resize(t_all *all);
+int					window_init(t_all *all);
+double				dist(double x1, double x2);
+int					valid_first_line(char *line);
+size_t				ft_strlen_only_color(char *str);
+char				*ft_strtrim_color(char *str);
+int					bitmap_save(t_all *all);
 
 #endif

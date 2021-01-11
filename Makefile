@@ -6,17 +6,28 @@
 #    By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/16 12:43:15 by tsierra-          #+#    #+#              #
-#    Updated: 2020/12/29 14:21:34 by tsierra-         ###   ########.fr        #
+#    Updated: 2021/01/08 15:48:31 by tsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRC = raycaster.c \
-	  cub3D.c \
-	  cub3D_main.c \
-	  sprites.c \
-	  bitmap.c
+SRC =	main.c \
+		params_parse.c \
+		params_parse_two.c \
+		color_parse.c \
+		textures_parse.c \
+		map_parse.c \
+		position_control.c \
+		key_manage.c \
+		window_manage.c \
+		wall_raycast.c \
+		sprite_raycast.c \
+		textures_init.c \
+		draw.c \
+		bitmap.c \
+		utils.c
+SRCDIR = src/
 OBJ = $(SRC:.c=.o)
 LIBFTDIR = libft/
 MLXDIR = mlx/
@@ -33,15 +44,15 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(addprefix $(SRCDIR),$(OBJ))
 	$(MAKE) -C $(LIBFTDIR)
 	$(MAKE) -C $(MLXDIR)
-	$(CC) $(SRC) -o $(NAME) $(CFLAGS) $(LINKS) $(LIBFTDIR)libft.a 
+	$(CC) $(addprefix $(SRCDIR),$(SRC)) -o $(NAME) $(CFLAGS) $(LINKS) $(LIBFTDIR)libft.a 
 
 clean:
 	$(MAKE) -C $(LIBFTDIR) clean
 	$(MAKE) -C $(MLXDIR) clean
-	$(RM) $(OBJ)
+	$(RM) $(addprefix $(SRCDIR),$(OBJ))
 
 fclean: clean
 	$(MAKE) -C $(LIBFTDIR) fclean
