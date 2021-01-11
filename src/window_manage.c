@@ -47,7 +47,7 @@ void	speed_init(t_all *all)
 	all->draw.height = 0;
 	all->draw.start = 0;
 	all->draw.end = 0; */
-	all->pos.mspeed = 0.25;
+	all->pos.mspeed = 0.15;
 	all->pos.rspeed = 0.05;
 }
 /*
