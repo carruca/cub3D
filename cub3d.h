@@ -166,7 +166,7 @@ typedef struct s_all
 	t_draw			draw;
 	t_ray			ray;
 	t_dvec			*sprite;
-	int				keyboard[125];
+	int				keyboard[127];
 	int				sprite_count;	
 	int				*sprite_order;
 	double			*sprite_dist;
