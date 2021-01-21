@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 15:48:46 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/08 15:52:05 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/21 11:52:16 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,13 @@ int		display(t_all *all)
 	return (1);
 }
 
-//Iniciar cada valor cuando lo voy a usar
 void	speed_init(t_all *all)
 {
 	all->draw.z_buffer = (double*)malloc(all->win.width * sizeof(double));
-/*	all->ray.cam.x = 0;
-//	all->ray.dir.x = 0;
-//	all->ray.dir.y = 0;
-//	all->maze.x = 0;
-//	all->maze.y = 0;
-//	all->ray.delta.x = 0;
-//	all->ray.delta.y = 0;
-//	all->ray.side.dist.x = 0;
-	all->ray.side.dist.y = 0;
-	all->ray.wall.dist = 0;
-	all->draw.height = 0;
-	all->draw.start = 0;
-	all->draw.end = 0; */
 	all->pos.mspeed = 0.15;
 	all->pos.rspeed = 0.05;
 }
+
 /*
 void	window_resize(t_all *all)
 {

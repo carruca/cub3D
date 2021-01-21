@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:25:30 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/08 14:32:59 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/21 11:50:16 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		key_core(t_all *all)
 		player_move(all, -all->plane.x, -all->plane.y);
 	if (all->keyboard[ESC_KEY])
 		program_exit(all);
-		return (0);
+	return (0);
 }
 
 int		key_release(int keycode, t_all *all)
@@ -71,22 +71,3 @@ int		key_press(int keycode, t_all *all)
 	all->keyboard[keycode] = 1;
 	return (0);
 }
-/*
-int		key_press(int keycode, t_all *all)
-{
-	if (keycode == W_KEY)
-		player_move(all, all->dir.x, all->dir.y);
-	if (keycode == LEFT_KEY)
-		player_rotate(all, all->pos.rspeed);
-	if (keycode == D_KEY)
-		player_move(all, all->plane.x, all->plane.y);
-	if (keycode == S_KEY)
-		player_move(all, -all->dir.x, -all->dir.y);
-	if (keycode == RIGHT_KEY)
-		player_rotate(all, -all->pos.rspeed);
-	if (keycode == A_KEY)
-		player_move(all, -all->plane.x, -all->plane.y);
-	if (keycode == ESC_KEY)
-		program_exit(all);
-	return (1);
-}*/

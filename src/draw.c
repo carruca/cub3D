@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:21:01 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/08 15:39:35 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/21 11:49:27 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void		vertical_draw(t_all *all, int x, int num)
+void		vertical_draw(t_all *all, int x, int i)
 {
 	int	y;
 	int	color;
@@ -32,10 +32,10 @@ void		vertical_draw(t_all *all, int x, int num)
 			my_mlx_pixel_put(&all->img, x, y, all->draw.c_rgb);
 		if (y >= all->draw.start && y <= all->draw.end)
 		{
-			all->tex[num].y = (int)all->tex[num].pos & (all->tex[num].height - 1);
-			all->tex[num].pos += all->tex[num].step;
-			color = all->tex[num].img->buff[all->tex[num].height *
-										all->tex[num].y + all->tex[num].x];
+			all->tex[i].y = (int)all->tex[i].pos & (all->tex[i].height - 1);
+			all->tex[i].pos += all->tex[i].step;
+			color = all->tex[i].img->buff[all->tex[i].height *
+										all->tex[i].y + all->tex[i].x];
 			my_mlx_pixel_put(&all->img, x, y, color);
 		}
 		if (y > all->draw.end)
