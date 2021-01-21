@@ -6,7 +6,7 @@
 #    By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/16 12:43:15 by tsierra-          #+#    #+#              #
-#    Updated: 2021/01/08 15:48:31 by tsierra-         ###   ########.fr        #
+#    Updated: 2021/01/21 14:49:43 by tsierra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBFTDIR = libft/
 MLXDIR = mlx/
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 LINKS = -I $(LIBFTDIR) -L $(LIBFTDIR) \
 		-I $(MLXDIR) -L $(MLXDIR) \
 		-lmlx -framework OpenGL -framework AppKit
