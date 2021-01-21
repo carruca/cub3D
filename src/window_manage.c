@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 15:48:46 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/21 11:52:16 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/21 14:52:10 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,9 @@ void	speed_init(t_all *all)
 	all->pos.rspeed = 0.05;
 }
 
-/*
-void	window_resize(t_all *all)
-{
-	int width;
-	int	height;
-
-	mlx_get_screen_size(all->mlx.ptr, &width, &height);
-	if (width && height)
-	{
-		if (all->win.width > width && all->win.height <= height)
-		{
-			all->win.width = width;
-			all->win.height = all->win.height * width / all->win.width;
-		}
-		if (all->win.height > height)
-		{
-			all->win.height = height;
-			all->win.width = all->win.width * height / all->win.height;
-		}
-	}
-}*/
-
 int		window_init(t_all *all)
 {
 	all->mlx.ptr = mlx_init();
-//	window_resize(all);
 	all->win.ptr = mlx_new_window(all->mlx.ptr, all->win.width,
 									all->win.height, "cub3D");
 	speed_init(all);
