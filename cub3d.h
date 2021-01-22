@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 10:34:02 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/21 15:01:42 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/22 12:10:32 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ typedef struct		s_all
 	t_draw			draw;
 	t_ray			ray;
 	t_dvec			*sprite;
-	int				keyboard[127];
+	int				keyboard[125];
 	int				sprite_count;
 	int				*sprite_order;
 	double			*sprite_dist;

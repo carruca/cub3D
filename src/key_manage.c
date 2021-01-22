@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 14:25:30 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/21 11:50:16 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/22 12:10:06 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,14 @@ int		key_core(t_all *all)
 
 int		key_release(int keycode, t_all *all)
 {
-	all->keyboard[keycode] = 0;
+	if (keycode < 125)
+		all->keyboard[keycode] = 0;
 	return (0);
 }
 
 int		key_press(int keycode, t_all *all)
 {
-	all->keyboard[keycode] = 1;
+	if (keycode < 125)
+		all->keyboard[keycode] = 1;
 	return (0);
 }
