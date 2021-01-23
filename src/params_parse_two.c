@@ -6,7 +6,7 @@
 /*   By: tsierra- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 13:27:05 by tsierra-          #+#    #+#             */
-/*   Updated: 2021/01/22 17:07:12 by tsierra-         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:45:07 by tsierra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ int		is_map(char *line, t_all *all)
 int		resolution_parse(char **params, t_all *all)
 {
 	if (!ft_is_str_digit(params[1]) || !ft_is_str_digit(params[2])
-			|| params[3]
-			|| (all->win.width = ft_atoi(params[1]) < 1)
-			|| (all->win.height = ft_atoi(params[2]) < 1))
+			|| params[3])
+		error_put(7);
+	all->win.width = ft_atoi(params[1]);
+	all->win.height = ft_atoi(params[2]);
+	if (all->win.width < 1 || all->win.height < 1)
 		error_put(7);
 	all->win.width = (all->win.width > 2560) ? 2560 : all->win.width;
 	all->win.height = (all->win.height > 1395) ? 1395 : all->win.height;
